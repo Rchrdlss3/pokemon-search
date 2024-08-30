@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
+import PokemonDisplay from './Components/PokemonDisplayComponent';
+import { pokemonModel } from './Models/PokeAPIModel';
+import { appStyle } from './Functions/PokemonThemes';
+import SpeciesComponent from './Components/SpeciesComponent';
+
+export const PokemonContext = createContext();
+export const ThemeContext = createContext();
 
 function App() {
+  const [theme,setTheme] = useState({});
+  const [pokemon,setPokemon] = useState(pokemonModel);
+
+  useEffect(() => {
+    setTheme({})
+  },[]);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style = {appStyle()}>
+      <PokemonContext.Provider value = {[pokemon,setPokemon]}>
+      <ThemeContext.Provider>
+      <PokemonDisplay pokemon = {pokemon}/>
+      <SpeciesComponent />
+      </ThemeContext.Provider>
+      </PokemonContext.Provider >
     </div>
   );
 }
