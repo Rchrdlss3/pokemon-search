@@ -8,7 +8,7 @@ export default function SearchComponent() {
     const [pokemonName,setPokemonName] = useState('');
 
     return (
-        <div style = {pokeSearchWrapper()}>
+        <div>
             <input
             style = {pokeInputStyle()}
             type = "search"

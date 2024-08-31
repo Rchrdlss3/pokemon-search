@@ -17,7 +17,7 @@ export default function PokemonDisplay({pokemon}) {
 
     return (
         <div style = {pokeDisplayStyle(backgroundColor)}>
-            {pokemon.name ? <PokemonNameComponent name = {pokemon.name}/> : null}
+            <PokemonNameComponent name = {pokemon.name ? pokemon.name : ''}/>
             <SearchComponent />
             <div style = {{width:200, height: 200, padding: 0, maring:0}}>
             <img width = {200} src = {imageSource}/>

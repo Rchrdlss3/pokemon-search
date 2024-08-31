@@ -16,14 +16,8 @@ export const pokeDisplayStyle = (hexColor) => {
         display: 'flex',
         flexDirection: 'column',
         background: `linear-gradient(0deg,#fff,${hexColor})`,
-        height: '800px',
+        height: '650px',
         tranisition: '2s'
-    }
-}
-
-export const pokeSearchWrapper = () => {
-    return {
-        padding: '5px'
     }
 }
 

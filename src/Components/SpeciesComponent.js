@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../App";
 import { fetchSpecies } from "../Functions/PokeAPIFunctions";
-import SpecifesCarousel from "./SpeciesCarousel";
 
 export default function SpeciesComponent(){
     const [pokemon,setPokemon] = useContext(PokemonContext);
@@ -16,14 +15,10 @@ export default function SpeciesComponent(){
 
     return (
         <div style = {{
-            display: 'flex',
-            width: '50vw',
-            height: '150px',
-            overflowX: 'scroll'
+            width: '100vw',
+            textAlign: 'center'
             }}>
-            {species.flavor_text_entries ? species.flavor_text_entries.map((fact) => {
-            if (fact.language.name == 'en') { return <SpecifesCarousel fact = {fact}/>}
-            }) : null} 
+            <p>{species.flavor_text_entries ? species.flavor_text_entries[Math.floor(Math.random()*species.flavor_text_entries.length)].flavor_text: null}</p>
         </div>
     ) 
 }
